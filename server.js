@@ -7,12 +7,17 @@ app.use(express.json());
 
 const client = new Client({
     authStrategy: new LocalAuth({ clientId: "traceam-dispatcher" }),
-puppeteer: {
-    headless: true,
-    // This tells the code: "Use the path Render provides, or fallback to the local one"
-    executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',
-    args: ['--no-sandbox', '--disable-setuid-sandbox']
-}
+    puppeteer: {
+        headless: true,
+        // 🛡️ SMART PATH: Use Render's path if available, otherwise use your Windows path
+        executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',
+        args: [
+            '--no-sandbox', 
+            '--disable-setuid-sandbox',
+            '--disable-dev-shm-usage',
+            '--disable-gpu'
+        ]
+    }
 });
 
 let isReady = false;
