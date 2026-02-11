@@ -9,10 +9,9 @@ const client = new Client({
     authStrategy: new LocalAuth({ clientId: "traceam-dispatcher" }),
     puppeteer: {
         headless: true,
-        // 🛡️ SMART PATH: Use Render's path if available, otherwise use your Windows path
-        executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',
+        // 🛡️ This tells Puppeteer to find the Chrome it just downloaded automatically
         args: [
-            '--no-sandbox', 
+            '--no-sandbox',
             '--disable-setuid-sandbox',
             '--disable-dev-shm-usage',
             '--disable-gpu'
