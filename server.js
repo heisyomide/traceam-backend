@@ -9,8 +9,7 @@ const client = new Client({
     authStrategy: new LocalAuth({ clientId: "traceam-dispatcher" }),
     puppeteer: {
         headless: true,
-        // 🛡️ Explicitly tell it where we installed it in the build step
-        executablePath: '/opt/render/.cache/puppeteer/chrome/linux-145.0.7632.46/chrome-linux64/chrome',
+        // 🛡️ Remove executablePath entirely - let the Environment Variable handle it
         args: [
             '--no-sandbox',
             '--disable-setuid-sandbox',
