@@ -9,7 +9,8 @@ const client = new Client({
     authStrategy: new LocalAuth({ clientId: "traceam-dispatcher" }),
     puppeteer: {
         headless: true,
-        // 🛡️ Remove executablePath entirely - let the Environment Variable handle it
+        // 🛡️ This points to the portable Chrome we just downloaded in Step 1
+        executablePath: '/opt/render/project/src/.cache/puppeteer/chrome/linux-132.0.6834.110/chrome-linux64/chrome',
         args: [
             '--no-sandbox',
             '--disable-setuid-sandbox',
