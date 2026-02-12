@@ -9,10 +9,10 @@ const client = new Client({
     authStrategy: new LocalAuth({ clientId: "traceam-dispatcher" }),
     puppeteer: {
         headless: true,
-        // 🛡️ This is the exact path where Docker installs Chrome
-        executablePath: '/usr/bin/google-chrome',
+        // 🛡️ This uses the environment variable we set in the Dockerfile
+        executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || '/usr/bin/google-chrome-stable',
         args: [
-            '--no-sandbox', 
+            '--no-sandbox',
             '--disable-setuid-sandbox',
             '--disable-dev-shm-usage'
         ]
